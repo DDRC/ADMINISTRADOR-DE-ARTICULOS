@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor de articulos</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="css/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="text-gray-900 font-serif">
+<body class="text-gray-900 font-serif bg-blue-500">
     <center><h1 class=" text-4xl"><u>CONTENIDO DE LOS ARTICULOS</u></h1></center>
     <div id="Cabecera">
         <h2 class="text-2xl text-center my-1">Contenido</h2>
@@ -29,9 +29,9 @@ Nombre del articulo <sup>*</sup>: <input type="text" name="" id="" class="border
     resize: none;"></textarea>     
     </div>
     <div id="Cambios-articulo" class="px-6" style="float:right;">
-   <br> Video <input type="radio" name="media" id="" style="margin-right:50px;"> URL Video: <input type="text" name="" id="">
-   <br> Audio <input type="radio" name="media" id=""style="margin-right:50px;"> URL Audio: <input type="text" name="" id="">
-   <br> Imagen <input type="radio" name="media" id=""style="margin-right:50px;"> URL Imagen: <input type="text" name="" id="">
+   <br> Video <input type="radio" name="media" class="mr-4" id="" style="margin-right:50px;"> URL Video: <input class="border-2 rounded-sm" type="text" name="" id="">
+   <br> Audio <input type="radio" name="media" class="mr-4" id=""style="margin-right:50px;"> URL Audio: <input class="border-2 rounded-sm" type="text" name="" id="">
+   <br> Imagen <input type="radio" name="media" class="mr-4" id=""style="margin-right:50px;">URL Imagen: <input class="border-2 rounded-sm" type="text" name="" id="">
    <br> Imagen y audio <input type="radio" name="media" id="" style="margin-right:50px;">
    </div>
 </body>
