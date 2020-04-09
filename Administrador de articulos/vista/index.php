@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor de articulos</title>
     <link href="css/tailwind.min.css" rel="stylesheet">
+    <script src="../controlador/edicion.js"></script>
 </head>
 <body class="text-gray-900 font-serif bg-blue-500">
     <center><h1 class=" text-4xl"><u>CONTENIDO DE LOS ARTICULOS</u></h1></center>
@@ -29,10 +30,10 @@ Nombre del articulo <sup>*</sup>: <input type="text" name="" id="" class="border
     resize: none;"></textarea>     
     </div>
     <div id="Cambios-articulo" class="px-6" style="float:right;">
-   <br> Video <input type="radio" name="media" class="mr-4" id="" style="margin-right:50px;"> URL Video: <input class="border-2 rounded-sm" type="text" name="" id="">
-   <br> Audio <input type="radio" name="media" class="mr-4" id=""style="margin-right:50px;"> URL Audio: <input class="border-2 rounded-sm" type="text" name="" id="">
-   <br> Imagen <input type="radio" name="media" class="mr-4" id=""style="margin-right:50px;">URL Imagen: <input class="border-2 rounded-sm" type="text" name="" id="">
-   <br> Imagen y audio <input type="radio" name="media" id="" style="margin-right:50px;">
+   <br> Video <input type="radio" onchange="mediaselect();" name="media" class="mr-4" id="V" style=" margin-right:50px;"> URL Video: <input class="border-2 rounded-sm" type="text" disabled id="MediaVideo">
+   <br> Audio <input type="radio" onchange="mediaselect();" name="media" class="mr-4" id="A"style=" margin-right:50px;"> URL Audio: <input class="border-2 rounded-sm" type="text" disabled id="MediaAudio">
+   <br> Imagen <input type="radio" onchange="mediaselect();" name="media" class="mr-4" id="I" style=" margin-right:50px;">URL Imagen: <input class="border-2 rounded-sm" type="text" disabled id="MediaImagen">
+   <br> Imagen y audio <input type="radio" onchange="mediaselect();" name="media" id="I&A" style="margin-right:50px;">
    </div>
 </body>
 </html>
