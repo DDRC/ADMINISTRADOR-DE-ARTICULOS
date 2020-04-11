@@ -37,3 +37,5 @@ Nombre del articulo <sup>*</sup>: <input type="text" name="" id="" class="border
    </div>
 </body>
 </html>
+
+
