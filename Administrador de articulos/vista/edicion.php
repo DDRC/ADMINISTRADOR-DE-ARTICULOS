@@ -18,6 +18,7 @@ if (isset($_SESSION['articulo'])) {
 }else{
     $llenar=false;
 }
+mysqli_close($conn);
     ?>
     <center><h1 class=" text-4xl"><u>CONTENIDO DE LOS ARTICULOS</u></h1></center>
     <form action="../controlador/guardar.php" method="POST">
@@ -61,11 +62,19 @@ echo ($partes['Detalle']);
 
 </html>
 <?php
-// $laDireccion=$_GET['detalle'];
-// $cosa=file_exists($laDireccion);
-// if (isset($laDireccion)) {
-//     echo($laDireccion);
-// echo($cosa);
+// $cadena = $_POST['VID'];
+// $cadena = $_POST['AUD'];
+// $cadena = $_POST['IMG'];
+// $cadena = "https://time-machine/blog";
+// if(filter_var( $cadena, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED )){
+//     echo "La url es correcto";
+// }else{
+//     echo "La url es incorrecto";
+// }
+// if(filter_var( $cadena, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED )){
+//     echo "La url es correcto";
+// }else{
+//     echo "La url es incorrecto";
 // }
 if ($llenar) {
     if ($partes['Publicado']==true) {
@@ -99,8 +108,7 @@ if ($llenar) {
          document.getElementById("MediaVideo").disabled=false;
          document.getElementById("MediaVideo").value="'.$partes['VideoURL'].'";
          </script>';
-     }
-     echo "<p>'$partes[Detalle]'</p>";
+     }     
 }
 ?>
 

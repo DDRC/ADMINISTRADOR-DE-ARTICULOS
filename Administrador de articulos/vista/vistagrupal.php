@@ -4,56 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muestra de los articulos creados</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
     <style>
 #contenedor{
     display: grid;
 grid-template-columns: 1fr 1fr 1fr;
-background-color: teal;
+background-color: none;
 }
 .column{
     background-color: gray;
-    height: 5cm;
+    height: 6cm;
     border: 1px blue dashed;
 }
     </style>
 </head>
 <body class="text-gray-900 font-serif bg-blue-500">
+
+<center><h1 class="my-12 text-5xl text-orange-300 justify-center">Articulos de Contenido</h1></center>
+    <div id="contenedor" >   
 <?php
-    require('../modelo/conecciones.php')
-    ?>
-    <div id="contenedor">
-    <div id="0" class="column">Holas chavos</div>
-    <div id="1" class="column">Aqui programando</div>
-    <div id="2" class="column">Ando</div>
-    <div id="0" class="column">Holas chavos</div>
-    <div id="1" class="column">Aqui programando</div>
-    <div id="2" class="column">Ando</div>
-    <div id="0" class="column">Holas chavos</div>
-    <div id="1" class="column">Aqui programando</div>
-    <div id="2" class="column">Ando</div>
-    <div id="0" class="column">Holas chavos</div>
-    <div id="1" class="column">Aqui programando</div>
-    <div id="2" class="column">Ando</div>
+    require('../modelo/conecciones.php');
+    session_start();
+    $query= mysqli_query($conn,"select * from Articulos;");
+    // $partes=mysqli_fetch_array($query);
+    while ($fila=mysqli_fetch_array($query)) {
+    if ($fila['Publicado']==true && $fila['Detalle']!="") {
+        if (isset($fila['AudioURL']) && isset($fila['ImageURL'])) {
+            $identificador=$fila['Nombre_Articulo'];
+            echo '<a href="vistaindividual.php?identificador='.$identificador.'"><div class="column flex items-end justify-center" style="background:url('.$fila['ImageURL'].');  background-size: cover;"></div></a>';   
+         }elseif (isset($fila['AudioURL']) ) {
+            $identificador=$fila['Nombre_Articulo'];
+             echo '<a href="vistaindividual.php?identificador='.$identificador.'"><div class="column flex items-center justify-center"><audio src="'.$fila['AudioURL'].'" controls></audio></div></a>';
+         }elseif (isset($fila['ImageURL'])) {
+            $identificador=$fila['Nombre_Articulo'];
+             echo '<a href="vistaindividual.php?identificador='.$identificador.'"><div class="column flex items-center justify-center"><img src="'.$fila['ImageURL'].'"  width="300px" height="300px"></div></a>';
+         }elseif (isset($fila['VideoURL'])) {
+            $identificador=$fila['Nombre_Articulo'];
+             echo '<a href="vistaindividual.php?identificador='.$identificador.'"><div class="column flex items-center justify-center"><video src="'.$fila['VideoURL'].'" controls  width="300px" height="300px"></video></div></a>';
+         }
+     }else if($fila['Publicado']==true){
+        if (isset($fila['AudioURL']) && isset($fila['ImageURL'])) {
+            echo '<div class="column flex items-end justify-center" style="background:url('.$fila['ImageURL'].'); background-size: cover;"><img src="'.$fila['ImageURL'].'" width="300px" height="300px"></div>';    
+         }elseif (isset($fila['AudioURL']) ) {
+             echo '<div class="column flex items-center justify-center"><audio src="'.$fila['AudioURL'].'" controls></audio></div>';
+         }elseif (isset($fila['ImageURL'])) {
+             echo '<div class="column flex items-center justify-center"><img src="'.$fila['ImageURL'].'" width="300px" height="300px"></div>';
+         }elseif (isset($fila['VideoURL'])) {
+             echo '<div class="column flex items-center justify-center"><video src="'.$fila['VideoURL'].'" controls  width="300px" height="300px"></video></div>';
+         }
+     }
+    }   
+?>
     </div>
-    <video src="Las.cicatrices.de.dracula.2K.etigol.descargacineclasico.com.mp4"  id="vid"  width="500px" height="500px" controls autoplay>
-        <source src="" type="">
-    </video>
-    <audio src="Kalimba.mp3" controls autoplay></audio>
-    <picture></picture>
-    <embed src="" type="audio/mp3"  width="100px" height="100px">
-    <input type="file" name="" id="url">
-    <input type="button" value="chus" onclick="reproducir()">
-    <object data="C:\Users/Daniel/Videos/XM-DP-2019-720p/X-Men DP (2019).mkv" width="250"
-    height="200" type=""></object>
 </body>
-<script>
-function reproducir() {
-    var file = document.getElementById('url').files[0];    
-    console.log(file);
-    // var file={name: "Primal.2019.1080p-dual-lat-cinecalidad.is.mp4", webkitRelativePath: "", size: 1666639192, type: "video/mp4"};
-var url = window.URL.createObjectURL(file);
-console.log(url);
-document.getElementById('vid').src=url;
-}
-</script>
 </html>

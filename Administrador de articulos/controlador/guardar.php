@@ -2,13 +2,23 @@
 require('../modelo/conecciones.php');
 $info=$_POST;
 session_start();
+if ($_POST['publicado']==0) {
+    $publicado=0;
+} else {
+    $publicado=1;
+}
+// if ($_POST['Detalle']!=="") {
+//     $descripcion=$_POST['Detalle'];
+//     echo 'es llenito';
+// } else {
+//     $descripcion=NULL;
+//     echo 'al parecer esta vacio';    
+// } 
+// echo $descripcion.'<br>';
+// echo $publicado.'<br>';
+
 if (isset($_SESSION['articulo'])) {
-    if ($_POST['publicado']==0) {
-        $publicado=0;
-    } else {
-        $publicado=1;
-    }
-    echo $publicado;
+    
     if ($_POST['media']=='I&A') {
         $IURL=$_POST['IMG'];
         $AURL=$_POST['AUD'];
@@ -42,12 +52,39 @@ header('location:../vista/lista.php');
         WHERE Nombre_Articulo = '$_SESSION[articulo]'";
         mysqli_query($conn,$Cambios);
         header('location:../vista/lista.php');
-     }
-    
-    
+     }  
 }else {
-    // $subnivel = "INSERT INTO x_documento_categoria (documento_categoria_id,documento_categoria_nombre,documento_categoria_padre_id) VALUES ('$idnueva', '$concat1', '$idnivel2')";
-    echo 'no hay nada que confirmar. <br>';
+     
+    if ($_POST['media']=='I&A') {
+        $IURL=$_POST['IMG'];
+        $AURL=$_POST['AUD'];
+$MediaID='Imagen y Audio';
+$Nuevo = "INSERT INTO Articulos 
+VALUES('$_POST[Nombre]','$publicado','$_POST[Detalle]','$MediaID',NULL,'$AURL','$IURL')";
+mysqli_query($conn,$Nuevo);
+header('location:../vista/lista.php');
+     }elseif ($_POST['media']=='I') {
+        $IURL=$_POST['IMG'];
+        $MediaID='Imagen';
+        $Nuevo = "INSERT INTO Articulos 
+        VALUES('$_POST[Nombre]','$publicado','$_POST[Detalle]','$MediaID',NULL,NULL,'$IURL')";
+        mysqli_query($conn,$Nuevo);
+        header('location:../vista/lista.php');
+     }elseif ($_POST['media']=='A') {
+        $AURL=$_POST['AUD'];
+        $MediaID='Audio';
+        $Nuevo = "INSERT INTO Articulos 
+VALUES('$_POST[Nombre]','$publicado','$_POST[Detalle]','$MediaID',NULL,'$AURL',NULL)";
+mysqli_query($conn,$Nuevo);   
+header('location:../vista/lista.php');      
+     }elseif ($_POST['media']=='V') {
+        $VURL=$_POST['VID'];
+        $MediaID='Video';
+        $Nuevo = "INSERT INTO Articulos 
+        VALUES('$_POST[Nombre]','$publicado','$_POST[Detalle]','$MediaID','$VURL',NULL,NULL)";
+        mysqli_query($conn,$Nuevo);
+        header('location:../vista/lista.php');
+     }
 }
 print_r($info);
 ?>
