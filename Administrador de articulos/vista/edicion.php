@@ -20,10 +20,11 @@ if (isset($_SESSION['articulo'])) {
 }
 mysqli_close($conn);
     ?>
-    <center><h1 class=" text-4xl"><u>CONTENIDO DE LOS ARTICULOS</u></h1></center>
+  <h1 class=" text-4xl justify-center text-center my-6"><u>CONTENIDO DE LOS ARTICULOS</u></h1>
+
     <form action="../controlador/guardar.php" method="POST">
     <div id="Cabecera">
-        <h2 class="text-2xl text-center my-1">Contenido</h2>
+        
         <input class="bg-orange-600 text-white rounded-lg p-2 mx-2" type="submit" name="save" value="Guardar">
         <a href="lista.php"><input class="bg-orange-600 text-white rounded-lg p-2 mx-2" type="button" value="Cancelar"></a>
     </div>
@@ -31,10 +32,10 @@ mysqli_close($conn);
     <div id="Cambios-nombre" class="mx-2" style="margin-bottom: 40px;">
     <br><br>
 <span id=""  style=" float:inline-left; margin-right: 30px;">
-     Publicado:<input class="mx-2" type="radio" name="publicado" value="1" required id="P"> 
-<br> No Publicado:<input class="mx-2" type="radio" name="publicado" value="0" required id="Nop">
+     Publicado*:<input class="mx-2" type="radio" name="publicado" value="1" required id="P"> 
+<br> No Publicado*:<input class="mx-2" type="radio" name="publicado" value="0" required id="Nop">
 </span>
-Nombre del articulo <sup>*</sup>: <input type="text" name="Nombre" id="Nombre" class="border-2 rounded-sm" required>
+Nombre del articulo*: <input type="text" name="Nombre" id="Nombre" class="border-2 rounded-sm" required>
     </div>
     <hr>
     <div id="Cambios-detalle" class="pl-16" style="display: inline;">
@@ -51,11 +52,11 @@ echo ($partes['Detalle']);
     ?></textarea>     
     </div>
     <div id="Cambios-articulo" class="px-6" style="float:right;">
-    
-   <br> Video <input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="V" value="V" style=" margin-right:50px;"> URL Video: <input name="VID" class="border-2 rounded-sm" type="text" disabled id="MediaVideo">
-   <br> Audio <input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="A" value="A"style=" margin-right:50px;"> URL Audio: <input name="AUD" class="border-2 rounded-sm" type="text" disabled id="MediaAudio">
-   <br> Imagen <input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="I" value="I" style=" margin-right:50px;">URL Imagen: <input name="IMG" class="border-2 rounded-sm" type="text" disabled id="MediaImagen">
-   <br> Imagen y audio <input type="radio" required onchange="mediaselect();" name="media" id="I&A" value="I&A" style="margin-right:50px;">
+
+   <br> Video *<input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="V" value="V" style=" margin-right:50px;"> URL Video: <input name="VID" class="border-2 rounded-sm" type="text" disabled id="MediaVideo">
+   <br> Audio *<input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="A" value="A"style=" margin-right:50px;"> URL Audio: <input name="AUD" class="border-2 rounded-sm" type="text" disabled id="MediaAudio">
+   <br> Imagen *<input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="I" value="I" style=" margin-right:50px;">URL Imagen: <input name="IMG" class="border-2 rounded-sm" type="text" disabled id="MediaImagen">
+   <br> Imagen y audio *<input type="radio" required onchange="mediaselect();" name="media" id="I&A" value="I&A" style="margin-right:50px;">
    </div>
    </form>
 </body>
@@ -83,9 +84,7 @@ if ($llenar) {
         echo '<script>document.getElementById("Nop").checked=true;</script>';
      }
      echo '<script>document.getElementById("Nombre").value="'.$partes['Nombre_Articulo'].'";
-     
      </script>"';
-     
      if (isset($partes['AudioURL']) && isset($partes['ImageURL'])) {
         echo '<script>document.getElementById("I&A").checked=true;
         document.getElementById("MediaImagen").disabled=false;

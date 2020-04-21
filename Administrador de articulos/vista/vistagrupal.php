@@ -19,8 +19,7 @@ background-color: none;
     </style>
 </head>
 <body class="text-gray-900 font-serif bg-blue-500">
-
-<center><h1 class="my-12 text-5xl text-orange-300 justify-center">Articulos de Contenido</h1></center>
+<h1 class="my-12 text-5xl text-orange-300 text-center justify-center">Articulos de Contenido</h1>
     <div id="contenedor" >   
 <?php
     require('../modelo/conecciones.php');
@@ -31,7 +30,7 @@ background-color: none;
     if ($fila['Publicado']==true && $fila['Detalle']!="") {
         if (isset($fila['AudioURL']) && isset($fila['ImageURL'])) {
             $identificador=$fila['Nombre_Articulo'];
-            echo '<a href="vistaindividual.php?identificador='.$identificador.'"><div class="column flex items-end justify-center" style="background:url('.$fila['ImageURL'].');  background-size: cover;"></div></a>';   
+            echo '<a href="vistaindividual.php?identificador='.$identificador.'"><div class="column flex items-end justify-center" style="background:url('.$fila['ImageURL'].'); background-size: cover;"><audio src="'.$fila['AudioURL'].'" controls></audio></div></a>';   
          }elseif (isset($fila['AudioURL']) ) {
             $identificador=$fila['Nombre_Articulo'];
              echo '<a href="vistaindividual.php?identificador='.$identificador.'"><div class="column flex items-center justify-center"><audio src="'.$fila['AudioURL'].'" controls></audio></div></a>';
@@ -44,7 +43,7 @@ background-color: none;
          }
      }else if($fila['Publicado']==true){
         if (isset($fila['AudioURL']) && isset($fila['ImageURL'])) {
-            echo '<div class="column flex items-end justify-center" style="background:url('.$fila['ImageURL'].'); background-size: cover;"><img src="'.$fila['ImageURL'].'" width="300px" height="300px"></div>';    
+            echo '<div class="column flex items-end justify-center" style="background:url('.$fila['ImageURL'].'); background-size: cover;"><audio src="'.$fila['AudioURL'].'" controls></audio></div>';    
          }elseif (isset($fila['AudioURL']) ) {
              echo '<div class="column flex items-center justify-center"><audio src="'.$fila['AudioURL'].'" controls></audio></div>';
          }elseif (isset($fila['ImageURL'])) {
