@@ -52,13 +52,13 @@ echo ($partes['Detalle']);
     ?></textarea>     
     </div>
     <div id="Cambios-articulo" class="px-6" style="float:right;">
-
    <br> Video *<input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="V" value="V" style=" margin-right:50px;"> URL Video: <input name="VID" class="border-2 rounded-sm" type="text" disabled id="MediaVideo">
    <br> Audio *<input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="A" value="A"style=" margin-right:50px;"> URL Audio: <input name="AUD" class="border-2 rounded-sm" type="text" disabled id="MediaAudio">
    <br> Imagen *<input type="radio" required onchange="mediaselect();" name="media" class="mx-4" id="I" value="I" style=" margin-right:50px;">URL Imagen: <input name="IMG" class="border-2 rounded-sm" type="text" disabled id="MediaImagen">
    <br> Imagen y audio *<input type="radio" required onchange="mediaselect();" name="media" id="I&A" value="I&A" style="margin-right:50px;">
    </div>
    </form>
+
 </body>
 
 </html>

@@ -22,7 +22,7 @@
     <dialog id="dialogo"> <p>¿Esta seguro que desea eliminar el articulo?</p><button type="submit" name="Eliminar">Si</button> &emsp;&emsp; <button id="Cancelar">No</button> </dialog> 
     </div>
     <!-- <button><i class="fa fa-thumbs-up"></i>Buy now!!!</button> -->
-    <fieldset class="my-3  text-teal-900 h-full w-full px-6">
+    <fieldset class="my-3 text-lg text-teal-900 h-full w-full px-6">
         <legend>Articulos Creados</legend>
         <br>
         <select name="art" id="select"  size="6" style="width: 100%;">

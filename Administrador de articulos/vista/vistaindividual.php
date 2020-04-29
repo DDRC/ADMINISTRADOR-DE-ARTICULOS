@@ -19,14 +19,14 @@
     <div id="Media" class="my-16 mx-10 inline-block justify-around">
         <?php
         if (isset($partes['AudioURL']) && isset($partes['ImageURL'])) {
-            echo '<img src="'.$partes['ImageURL'].'" width="300px"><br>
+            echo '<img src="'.$partes['ImageURL'].'" width="450px" height="450px" style="display:inline-block"><br>
             <audio src="'.$partes['AudioURL'].'" controls></audio>';   
          }elseif (isset($partes['AudioURL']) ) {
              echo '<audio src="'.$partes['AudioURL'].'" controls></audio>';
          }elseif (isset($partes['ImageURL'])) {
-             echo '<img src="'.$partes['ImageURL'].'"  width="300px" height="300px">';
+             echo '<img src="'.$partes['ImageURL'].'"  width="450px" height="450px" style="display:inline-block">';
          }elseif (isset($partes['VideoURL'])) {
-             echo '<video src="'.$partes['VideoURL'].'" controls width="300px" height="300px" class="inline"></video>';
+             echo '<video src="'.$partes['VideoURL'].'" controls width="700px" height="700px" class="inline"></video>';
          }
         ?>       
     </div>

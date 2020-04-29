@@ -1,0 +1,24 @@
+#contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: none;
+}
+
+.column {
+    background-color: rgb(163, 163, 163);
+    height: 6cm;
+    border: 5px #001aff double;
+    position: relative;
+    overflow: hidden;
+}
+
+.textoD {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    transition: all 1s ease-out;
+}
+
+.column:hover .textoD {
+    transform: translateY(0%);
+}
